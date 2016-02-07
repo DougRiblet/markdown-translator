@@ -1,0 +1,34 @@
+body {
+  background-color: #22555f;
+}
+
+h2.colTitle {
+  font-size: 1.25em;
+  color: #eecc66;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#midGap {
+  text-align: center;
+}
+
+#arrow {
+  color: #eecc66;
+  font-size: 1.5em;
+  margin-top: 170px;
+}
+
+#tranDiv, textarea {
+  width: 100%;
+  background-color: white;
+  min-height: 550px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: solid 1px #22555f;
+}
+
+textarea {
+  font-family: "Lucida Console", Monaco, monospace;
+}

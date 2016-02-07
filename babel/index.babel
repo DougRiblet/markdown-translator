@@ -1,0 +1,58 @@
+
+var MarkFrame = React.createClass({
+  render: function() {
+    return (
+      <form>
+        <textarea name="markTextarea" 
+          onChange={this.props.markChange}>
+          {this.props.markInput}
+        </textarea>
+      </form>
+    );
+  }
+});
+
+var TranFrame = React.createClass({
+  transformMarkup: function(y) {
+    var mark2html = marked(y, {sanitize: true});
+    return { __html: mark2html };
+  },
+  render: function() {
+    return (
+      <div id="tranDiv">
+        <span dangerouslySetInnerHTML={this.transformMarkup(this.props.markInput)} />
+      </div>
+    );
+  }
+});
+
+var FullPage = React.createClass({
+  getInitialState: function() {
+    return { markInput: "Heading\n=======\n\nSub-heading\n-----------\n\n### Another deeper heading\n\nParagraphs are separated\nby a blank line.\n\nLeave 2 spaces at the end of a line to do a  \nline break\n\nText attributes *italic*, **bold**, \n`monospace`, ~~strikethrough~~ .\n\nShopping list:\n\n  * apples\n  * oranges\n  * pears\n\nNumbered list:\n\n  1. apples\n  2. oranges\n  3. pears\n\nThe rain---not the reign---in\nSpain.\n\n *[Doug Riblet](https://github.com/smashzen)*"};
+  },
+  markChange: function(k) {
+    this.setState({markInput: k.target.value});
+  },
+  render: function() {
+    return (
+      <div className="row">
+        <div className="col-md-5" id="markBox">
+          <h2 className="colTitle">Type in Markdown</h2>
+          <MarkFrame markInput={this.state.markInput} markChange={this.markChange} />
+        </div>
+      <div className="col-md-2" id="midGap">
+      <span id="arrow" className="glyphicon glyphicon-arrow-right"></span>
+      </div>
+        <div className="col-md-5" id="tranBox">
+          <h2 className="colTitle">See HTML Output</h2>
+          <TranFrame markInput={this.state.markInput} />
+        </div>
+      </div>
+    );
+  }
+});
+
+React.render(
+  <FullPage />,
+  document.getElementById('container')
+);

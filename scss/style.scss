@@ -1,0 +1,38 @@
+$teal: #22555f;
+$yellow: #eecc66;
+
+body {
+  background-color: $teal;
+}
+
+h2.colTitle {
+  font-size: 1.25em;
+  color: $yellow;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#midGap {
+  text-align: center;
+}
+
+#arrow {
+  color: $yellow;
+  font-size: 1.5em;
+  margin-top: 170px;
+}
+
+#tranDiv {
+  width: 100%;
+  background-color: white;
+  min-height: 550px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: solid 1px $teal;
+}
+
+textarea {
+  @extend #tranDiv;
+  font-family: "Lucida Console", Monaco, monospace;
+}
